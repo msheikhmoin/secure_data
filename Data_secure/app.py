@@ -2,7 +2,7 @@ import streamlit as st
 import hashlib
 from cryptography.fernet import Fernet
 
-# 🎨 Inject Fancy CSS
+# 🎨 
 def inject_style():
     st.markdown("""
         <style>
@@ -92,13 +92,13 @@ def inject_style():
 
 
 
-# 🔒 Session states
+# 🔒 
 if "vault" not in st.session_state: st.session_state.vault = {}
 if "tries" not in st.session_state: st.session_state.tries = 0
 if "lockout" not in st.session_state: st.session_state.lockout = False
 if "fernet" not in st.session_state: st.session_state.fernet = Fernet(Fernet.generate_key())
 
-# 🚀 Functions
+# 🚀 
 def hash(p): return hashlib.sha256(p.encode()).hexdigest()
 def lock(t): return st.session_state.fernet.encrypt(t.encode()).decode()
 def unlock(t): return st.session_state.fernet.decrypt(t.encode()).decode()
@@ -147,10 +147,10 @@ def access_page():
                 st.warning("🚫 Locked. Re-auth required.")
                 st.session_state.lockout = True
 
-# 🎨 Apply Design
+# 🎨 
 inject_style()
 
-# 📋 Sidebar Navigation
+# 📋
 st.sidebar.title("⚙️ Menu")
 choice = st.sidebar.radio("📂 Go to", [
     "🏠 Home",
